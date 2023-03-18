@@ -90,6 +90,12 @@
       );
       //googleSat.addTo(map);
       /*google satellite*/
+      /*marker*/
+      //let marker = L.marker([28.394857, 84.124008]).addTo(map);
+      let marker = L.marker([28.394857, 84.124008]);
+      let popUp = marker.bindPopup("This is the Nepal").openPopup();
+      popUp.addTo(map);
+      /*marker*/
     </script>
 
     <!--end of leaflet.js js script-->
