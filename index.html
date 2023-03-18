@@ -92,7 +92,12 @@
       /*google satellite*/
       /*marker*/
       //let marker = L.marker([28.394857, 84.124008]).addTo(map);
-      let marker = L.marker([28.394857, 84.124008]);
+      let myIcon = L.icon({
+        iconUrl: "img/icon.png",
+        iconSize: [40, 40],
+      });
+
+      let marker = L.marker([28.394857, 84.124008], { icon: myIcon });
       let popUp = marker.bindPopup("This is the Nepal").openPopup();
       popUp.addTo(map);
       /*marker*/
