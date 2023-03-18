@@ -89,6 +89,16 @@
         }
       );
       //googleSat.addTo(map);
+      let nexrad = L.tileLayer.wms(
+        "http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
+        {
+          layers: "nexrad-n0r-900913",
+          format: "image/png",
+          transparent: true,
+          attribution: "Weather data © 2012 IEM Nexrad",
+        }
+      );
+      nexrad.addTo(map);
       /*google satellite*/
       /*marker*/
       //let marker = L.marker([28.394857, 84.124008]).addTo(map);
@@ -102,6 +112,7 @@
         .bindPopup("This is the Nepal" + marker.getLatLng())
         .openPopup();
       popUp.addTo(map);
+      let secondMarker = L.marker([29.394857, 85.124008], { icon: myIcon });
       console.log(marker.toGeoJSON());
       /*marker*/
       let baseMaps = {
@@ -113,11 +124,13 @@
       };
       let overlayMaps = {
         Marker: marker,
+        "Second marker": secondMarker,
       };
       L.control
         .layers([baseMaps, overlayMaps], { collapsed: false })
         .addTo(map);
       map.removeLayer(osm);
+      let geojsonLayer = new L.GeoJSON.AJAX("geojson.json");
     </script>
 
     <!--end of leaflet.js js script-->
