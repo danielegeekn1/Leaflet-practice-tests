@@ -71,7 +71,7 @@
       //DarkMatter.addTo(map);
       /*dark map*/
       /*google street*/
-      googleStreets = L.tileLayer(
+      let googleStreets = L.tileLayer(
         "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
         {
           maxZoom: 20,
@@ -81,7 +81,7 @@
       //googleStreets.addTo(map);
       /*google street*/
       /*google satellite*/
-      googleSat = L.tileLayer(
+      let googleSat = L.tileLayer(
         "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         {
           maxZoom: 20,
@@ -98,9 +98,26 @@
       });
 
       let marker = L.marker([28.394857, 84.124008], { icon: myIcon });
-      let popUp = marker.bindPopup("This is the Nepal").openPopup();
+      let popUp = marker
+        .bindPopup("This is the Nepal" + marker.getLatLng())
+        .openPopup();
       popUp.addTo(map);
+      console.log(marker.toGeoJSON());
       /*marker*/
+      let baseMaps = {
+        OSM: osm,
+        "Water color map": Watercolor,
+        Dark: DarkMatter,
+        "Google Streets": googleStreets,
+        "Google Satellite": googleSat,
+      };
+      let overlayMaps = {
+        Marker: marker,
+      };
+      L.control
+        .layers([baseMaps, overlayMaps], { collapsed: false })
+        .addTo(map);
+      map.removeLayer(osm);
     </script>
 
     <!--end of leaflet.js js script-->
