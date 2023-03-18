@@ -45,7 +45,7 @@
       osm.addTo(map);
       /*osm layer*/
       /*water color*/
-      let Stamen_Watercolor = L.tileLayer(
+      let Watercolor = L.tileLayer(
         "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
         {
           attribution:
@@ -56,9 +56,42 @@
           ext: "jpg",
         }
       );
-      Stamen_Watercolor.addTo(map);
+      // Watercolor.addTo(map)
       /*water color*/
+      /*dark map*/
+      let DarkMatter = L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: "abcd",
+          maxZoom: 20,
+        }
+      );
+      //DarkMatter.addTo(map);
+      /*dark map*/
+      /*google street*/
+      googleStreets = L.tileLayer(
+        "http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        {
+          maxZoom: 20,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        }
+      );
+      //googleStreets.addTo(map);
+      /*google street*/
+      /*google satellite*/
+      googleSat = L.tileLayer(
+        "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        {
+          maxZoom: 20,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        }
+      );
+      //googleSat.addTo(map);
+      /*google satellite*/
     </script>
+
     <!--end of leaflet.js js script-->
   </body>
 </html>
