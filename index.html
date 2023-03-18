@@ -131,6 +131,13 @@
         .addTo(map);
       map.removeLayer(osm);
       let geojsonLayer = new L.GeoJSON.AJAX("geojson.json");
+      //leaflet events
+      map.on("mouseover", function () {
+        console.log("Your mouse is over the map");
+      });
+      map.on("mousemove", function (e) {
+        console.log(e);
+      });
     </script>
 
     <!--end of leaflet.js js script-->
